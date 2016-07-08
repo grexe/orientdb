@@ -99,8 +99,8 @@ public class OLogManager {
   public void log(final Object iRequester, final Level iLevel, String iMessage, final Throwable iException,
       final Object... iAdditionalArgs) {
 
-    if (iMessage != null)
-      System.out.println(String.format(iMessage, iAdditionalArgs));
+//    if (iMessage != null)
+//      System.out.println(String.format(iMessage, iAdditionalArgs));
     if (true)
       return;
 

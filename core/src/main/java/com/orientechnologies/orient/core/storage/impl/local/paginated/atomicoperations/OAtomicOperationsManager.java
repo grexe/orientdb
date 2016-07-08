@@ -613,6 +613,15 @@ public class OAtomicOperationsManager implements OAtomicOperationsMangerMXBean {
     return storageTransaction == null || storageTransaction.getClientTx().isUsingLog();
   }
 
+  public void dumpUseWal() {
+    System.out.println(writeAheadLog);
+    System.out.println(unsafeMode.get());
+    final OStorageTransaction storageTransaction = storage.getStorageTransaction();
+    System.out.println(storageTransaction);
+    if (storageTransaction != null)
+      System.out.println(storageTransaction.getClientTx().isUsingLog());
+  }
+
   private class UncompletedCommit implements OUncompletedCommit<OAtomicOperation> {
     private final OAtomicOperation         operation;
     private final OUncompletedCommit<Void> nestedCommit;

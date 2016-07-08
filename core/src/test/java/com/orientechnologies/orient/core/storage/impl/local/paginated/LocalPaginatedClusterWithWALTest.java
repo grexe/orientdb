@@ -59,6 +59,8 @@ public class LocalPaginatedClusterWithWALTest extends LocalPaginatedClusterTest 
 
     createExpectedStorage();
     createPaginatedCluster();
+
+    storage.getAtomicOperationsManager().dumpUseWal();
   }
 
   private void createExpectedStorage() {
@@ -352,6 +354,7 @@ public class LocalPaginatedClusterWithWALTest extends LocalPaginatedClusterTest 
             final OFileCreatedWALRecord fileCreatedCreatedRecord = (OFileCreatedWALRecord) restoreRecord;
             final String fileName = fileCreatedCreatedRecord.getFileName()
                 .replace("actualPaginatedClusterWithWALTest", "expectedPaginatedClusterWithWALTest");
+            System.out.println("!!! RESTORED: " + fileName);
             if (!expectedWriteCache.exists(fileName))
               expectedReadCache.addFile(fileName, fileCreatedCreatedRecord.getFileId(), expectedWriteCache);
           } else {

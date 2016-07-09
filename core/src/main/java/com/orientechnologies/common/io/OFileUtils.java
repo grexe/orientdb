@@ -201,9 +201,6 @@ public class OFileUtils {
   }
 
   public static boolean delete(File file) throws IOException {
-    System.out.println("!!! DELETE: " + file + ":");
-    new Exception().printStackTrace();
-
     if (!file.exists())
       return true;
 
